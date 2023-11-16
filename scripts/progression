@@ -1,3 +1,4 @@
 - recoder la variable "grav" pour qu'elle prenne les valeurs dans l'ordre croissant logique
 - faire des heatmap
 - transformer les variables codées avec des trucs plus explicites (genre 1 -> "homme", 2 -> "femme")
+- est-ce que ça s'affiche Baptiste ?
