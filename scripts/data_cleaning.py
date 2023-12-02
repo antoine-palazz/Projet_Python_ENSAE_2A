@@ -165,7 +165,7 @@ def clean_df_lieux(df):
     # de les conserver
 
     df_lieux.loc[df_lieux['vma'] > 130, 'vma'] = np.nan
-    df_lieux["vma"] = df_lieux["vma"].replace(-1, np.nan)
+    df_lieux["vma"].replace(-1, np.nan, inplace=True)
 
     df_lieux["nbv"] = df_lieux["nbv"].replace({"#ERREUR": np.nan}).astype(float).replace({-1: np.nan, 0: np.nan})
 
