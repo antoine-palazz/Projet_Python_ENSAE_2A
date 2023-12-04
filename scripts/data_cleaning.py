@@ -4,8 +4,6 @@ import pandas as pd
 def clean_df_usagers(df):
     df_usagers = df.copy()
 
-    df_usagers["grav"].replace({2: 4, 4: 2}, inplace=True)
-
     df_usagers["sexe"].replace({
         1: "homme",
         2: "femme",
