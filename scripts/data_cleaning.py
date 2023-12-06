@@ -49,6 +49,8 @@ def clean_df_usagers(df):
         3: "en groupe"
     }, inplace=True)
 
+    df_usagers.replace(-1, np.NaN, inplace=True)
+
     return df_usagers
 
 def clean_df_caracs(df):
@@ -61,6 +63,14 @@ def clean_df_caracs(df):
     df_caracs.rename(columns={"Accident_Id": "Num_Acc"}, inplace=True)
 
     df_caracs['heure'] = pd.to_datetime(df_caracs['hrmn'], format='%H:%M').dt.time
+    
+    df_caracs['lum'].replace({
+        1: "plein jour",
+        2: "crépuscule/aube"
+        3: "nuit sans éclairage public",
+        4: "nuit avec éclairage public non allumé",
+        5: "nuit avec éclairage public allumé"
+    })
 
     df_caracs['lat'] = df_caracs['lat'].str.replace(',', '.').astype(float)
     df_caracs['long'] = df_caracs['long'].str.replace(',', '.').astype(float)
@@ -68,6 +78,42 @@ def clean_df_caracs(df):
     df_caracs["agg"].replace({
         1: "hors agglo",
         2: "agglo"
+    }, inplace=True)
+
+    df_caracs['int'].replace({
+        1: "hors intersection",
+        2: "intersection en X",
+        3: "intersection en T",
+        4: "intersection en Y",
+        5: "intersection à +4 branches",
+        6: "giratoire",
+        7: "place",
+        8: "passage à niveau",
+        9: "autre"
+    }, inplace=True)
+
+    df_caracs['atm'].replace({
+        -1: np.nan,
+        1: "normale",
+        2: "pluie légère",
+        3: "pluie forte",
+        4: "neige/grêle",
+        5: "brouillard/fumée",
+        6: "vent fort/tempête",
+        7: "temps éblouissant",
+        8: "temps couvert",
+        9: "autre"
+    }, inplace=True)
+
+    df_caracs['col'].replace({
+        -1: np.nan,
+        1: "2 véhicules - frontale",
+        2: "2 véhicules - par l'arrière",
+        3: "2 véhicules - par le côté",
+        4: "3+ véhicules - en chaîne",
+        5: "3+ véhicules - collisions multiples",
+        6: "autre collision",
+        7: "sans collision"
     }, inplace=True)
 
     df_caracs.replace(-1, np.NaN, inplace=True)
@@ -167,6 +213,8 @@ def clean_df_lieux(df):
 
     df_lieux["nbv"] = df_lieux["nbv"].replace({"#ERREUR": np.nan}).astype(float).replace({-1: np.nan, 0: np.nan})
 
+    df_lieux.replace(-1, np.NaN, inplace=True)
+
     return df_lieux
 
 
@@ -202,5 +250,7 @@ def clean_df_vehicules(df):
         -1: np.nan,
         0: np.nan
     }, inplace=True)
+
+    df_vehicules.replace(-1, np.NaN, inplace=True)
 
     return df_vehicules
