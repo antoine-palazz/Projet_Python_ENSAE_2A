@@ -66,14 +66,16 @@ def clean_df_caracs(df):
     
     df_caracs['lum'].replace({
         1: "plein jour",
-        2: "crépuscule/aube"
+        2: "crépuscule/aube",
         3: "nuit sans éclairage public",
         4: "nuit avec éclairage public non allumé",
         5: "nuit avec éclairage public allumé"
-    })
+    }, inplace=True)
 
-    df_caracs['lat'] = df_caracs['lat'].str.replace(',', '.').astype(float)
-    df_caracs['long'] = df_caracs['long'].str.replace(',', '.').astype(float)
+    if type(df_caracs['lat'][0]) == str:
+        df_caracs['lat'] = df_caracs['lat'].str.replace(',', '.').astype(float)
+    if type(df_caracs['long'][0]) == str:
+        df_caracs['long'] = df_caracs['long'].str.replace(',', '.').astype(float)
 
     df_caracs["agg"].replace({
         1: "hors agglo",
