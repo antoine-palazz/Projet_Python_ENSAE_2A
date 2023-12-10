@@ -259,7 +259,14 @@ def clean_df_vehicules(df):
     }, inplace=True)
 
     df_vehicules["obsm"].replace({
-        -1: np.nan
+        -1: np.nan,
+        0: "aucun",
+        1: "piéton",
+        2: "véhicule",
+        4: "véhicul sur rail",
+        5: "animal domestique",
+        6: "animal sauvage",
+        9: "autre"
     }, inplace=True)
 
     df_vehicules["choc"].replace({
