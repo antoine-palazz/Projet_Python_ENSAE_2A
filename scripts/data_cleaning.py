@@ -28,19 +28,20 @@ def clean_df_usagers(df):
         9: "autre"
     }, inplace=True)
 
-    df_usagers[["secu1", "secu2", "secu3"]].replace({
-        -1: np.nan,
-        0: np.nan,
-        1: "ceinture",
-        2: "casque",
-        3: "dispositif enfants",
-        4: "gilet réfléchissant",
-        5: "airbag",
-        6: "gants",
-        7: "gants + airbag",
-        8: np.nan,
-        9: "autre"
-    }, inplace=True)
+    for secu in ["secu1", "secu2", "secu3"]:
+        df_usagers[secu].replace({
+            -1: np.nan,
+            0: np.nan,
+            1: "ceinture",
+            2: "casque",
+            3: "dispositif enfants",
+            4: "gilet réfléchissant",
+            5: "airbag",
+            6: "gants",
+            7: "gants + airbag",
+            8: np.nan,
+            9: "autre"
+        }, inplace=True)
 
     df_usagers["actp"].replace({
         "-1": np.nan,
@@ -165,6 +166,14 @@ def clean_df_lieux(df):
         1: "piste cyclable",
         2: "bande cyclable",
         3: "voie réservée"
+    }, inplace=True)
+
+    df_lieux["prof"].replace({
+        -1: np.nan,
+        1: "plat",
+        2: "pente",
+        3: "sommet de côte",
+        4: "bas de côte"
     }, inplace=True)
 
     df_lieux["plan"].replace({
