@@ -270,17 +270,59 @@ def clean_df_vehicules(df):
     }, inplace=True)
 
     df_vehicules["choc"].replace({
-        -1: np.nan
+        -1: np.nan,
+        0: "aucun",
+        1: "avant",
+        2: "avant droit",
+        3: "avant gauche",
+        4: "arrière",
+        5: "arrière droit",
+        6: "arrière gauche",
+        7: "côté droit",
+        8: "côté gauche",
+        9: "chocs multiples"
     }, inplace=True)
 
     df_vehicules["manv"].replace({
         -1: np.nan,
-        0: np.nan
+        0: np.nan,
+        1: "sans changement de directin",
+        2: "même sens, même file",
+        3: "entre 2 files",
+        4: "en marche arrière",
+        5: "à contresens",
+        6: "en franchissant le terre-plein central",
+        7: "couloir bus, même sens",
+        8: "couloir bus, sens inverse",
+        9: "en s'insérant",
+        10: "demi-tour sur la chaussée",
+        11: "changement de file à gauche",
+        12: "changement de file à droite",
+        13: "déporté à gauche",
+        14: "déporté à droite",
+        15: "tournant à gauche",
+        16: "tournant à droite",
+        17: "dépassant à gauche",
+        18: "dépassant à droite",
+        19: "traversant la chaussée",
+        20: "manoeuvre de stationnement",
+        21: "manoeuvre d'évitement",
+        22: "ouverture de porte",
+        23: "arrêté (hors stationnement)",
+        24: "en stationnement",
+        25: "circulant sur trottoir",
+        26: "autre"
     }, inplace=True)
 
     df_vehicules["motor"].replace({
         -1: np.nan,
-        0: np.nan
+        0: np.nan,
+        1: "hydrocarbures",
+        2: "hybride électrique",
+        3: "électrique",
+        4: "hydrogène",
+        5: "humaine",
+        6: "autre"
     }, inplace=True)
 
     df_vehicules.replace(-1, np.NaN, inplace=True)
