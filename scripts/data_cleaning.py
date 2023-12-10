@@ -28,7 +28,6 @@ def clean_df_usagers(df):
         9: "autre"
     }, inplace=True)
 
-
     df_usagers[["secu1", "secu2", "secu3"]].replace({
         -1: np.nan,
         0: np.nan,
@@ -41,7 +40,7 @@ def clean_df_usagers(df):
         7: "gants + airbag",
         8: np.nan,
         9: "autre"
-    })
+    }, inplace=True)
 
     df_usagers["actp"].replace({
         "-1": np.nan,
