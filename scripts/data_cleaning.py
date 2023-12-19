@@ -226,7 +226,7 @@ def clean_df_lieux(df):
         8: "autre"
     }, inplace=True)
 
-    # VMA indique la vitesse maximale autorisée. Lse vitesses supérieures à 130 sont
+    # VMA indique la vitesse maximale autorisée. Les vitesses supérieures à 130 sont
     # sont donc des erreurs. Puisqu'il n'existe pas d'autre base recensant les vitesses
     # (ce qui permettrait d'imputer les bonnes valeurs à l'aide d'un merge)
     # on les remplace par des NaN
@@ -253,6 +253,39 @@ def clean_df_vehicules(df):
     df_vehicules["catv"].replace({
         0: np.nan
     }, inplace=True)
+
+    df_vehicules["catv_2"] = df_vehicules["catv"].replace({
+        1: "vélo",
+        2: "moto",
+        3: "autre",
+        7: "véhicule léger",
+        10: "véhicule utilitaire",
+        13: "poids lourd",
+        14: "poids lourd",
+        15: "poids lourd",
+        16: "tracteur",
+        17: "tracteur",
+        20: "autre",
+        21: "tracteur",
+        30: "moto",
+        31: "moto",
+        32: "moto",
+        33: "moto",
+        34: "moto",
+        35: "quad",
+        36: "quad",
+        37: "bus/car",
+        38: "bus/car",
+        39: "train",
+        40: "tram",
+        41: "3 roues",
+        42: "3 roues",
+        43: "3 roues",
+        50: "EDP",
+        60: "EDP",
+        80: "VAE",
+        99: "autre"
+    })
 
     df_vehicules["obs"].replace({
         -1: np.nan
