@@ -76,8 +76,6 @@ def clean_df_caracs(df):
     # pour faciliter la jointure tout à l'heure
 
     df_caracs.rename(columns={"Accident_Id": "Num_Acc"}, inplace=True)
-
-    df_caracs['heure'] = pd.to_datetime(df_caracs['hrmn'], format='%H:%M').dt.time
     
     df_caracs['lum'].replace({
         1: "plein jour",
@@ -86,11 +84,6 @@ def clean_df_caracs(df):
         4: "nuit avec éclairage public non allumé",
         5: "nuit avec éclairage public allumé"
     }, inplace=True)
-
-    if type(df_caracs['lat'][0]) == str:
-        df_caracs['lat'] = df_caracs['lat'].str.replace(',', '.').astype(float)
-    if type(df_caracs['long'][0]) == str:
-        df_caracs['long'] = df_caracs['long'].str.replace(',', '.').astype(float)
 
     df_caracs["agg"].replace({
         1: "hors agglo",
@@ -226,14 +219,6 @@ def clean_df_lieux(df):
         8: "autre"
     }, inplace=True)
 
-    # VMA indique la vitesse maximale autorisée. Les vitesses supérieures à 130 sont
-    # sont donc des erreurs. Puisqu'il n'existe pas d'autre base recensant les vitesses
-    # (ce qui permettrait d'imputer les bonnes valeurs à l'aide d'un merge)
-    # on les remplace par des NaN
-    # Les valeurs très faibles comme 1 sont suspectes, mais dans le doute il est préférable
-    # de les conserver
-
-    df_lieux.loc[df_lieux['vma'] > 130, 'vma'] = np.nan
     df_lieux["vma"].replace(-1, np.nan, inplace=True)
 
     df_lieux["nbv"] = df_lieux["nbv"].replace({"#ERREUR": np.nan}).astype(float).replace({-1: np.nan, 0: np.nan})
