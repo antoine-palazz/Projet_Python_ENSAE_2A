@@ -1,13 +1,20 @@
-# Projet_Python_ENSAE_2A
-Projet "Python pour la data science" 2ème année ENSAE par Baptiste Bourillon, Nathan Langlois et Clémentine Mins.
+# Projet Python 2A ENSAE
 
-Objectif du projet : prédire/estimer le niveau de gravité d'un accident de la route en fonction de ses caractéristiques (caractéristiques du véhicule, de la route, de l'obstacle...)
+_Baptiste BOURRILLON, Nathan LANGLOIS, Clémentine MINS_
 
-Données : nous utilisons les bases de données annuelles des accidents corporels de la circulation routière, disponibles sur le site data.gouv. Nous nous intéressons aux 4 dernières années, de 2019 à 2022.
+Projet réalisé dans le cadre du cours _Python pour la data science_ de Lino Galiana dispensé à l'ENSAE Paris au cours de l'année 2023-2024.
 
-Notebooks : datacleaning et eda  ??
-Notre projet se décompose en trois parties : une première partie imortation et nottoyage des données, une deuxième partie statistiques descriptives et analyse graphique, et enfin une partie modélisation.
 
-nNettoyage de données : 
-Analyse graphique : 
-Modélisation : 
+## Problématique : prédire la gravité d'un accident de la route
+
+L'objectif du projet est de prédire la gravité d'un accident de la route en fonction de ses caractéristiques (par exemple : sexe du passager, port de la ceinture, nature du véhicule, catégorie de route, etc.).
+
+## Données utilisées
+
+Nous avons utilisé les [bases de données annuelles des accidents corporels de la circulation routière](https://www.data.gouv.fr/fr/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/), disponibles sur la plateforme data.gouv. Nous avons utilisé les bases des quatre dernières années, de 2019 à 2022.
+
+## Plan du notebook principal
+
+1. Import et nettoyage des données
+2. EDA (analyse exploratoire)
+3. Modélisation
